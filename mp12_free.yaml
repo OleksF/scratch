@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: classify-mnist-ff-free
+spec:
+  template:
+    spec:
+      containers:
+      - name: classify-mnist-ff-free
+        image: ofirsov/uiuc-cs498-mp12:0.1
+        env:
+        - name: DATASET
+          value: "mnist"
+        - name: TYPE
+          value: "ff"
+        resources:
+          limits:
+            cpu: "0.9"
+      restartPolicy: Never
+  backoffLimit: 4
+
+---
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: pod-demo
+spec:
+  hard:
+    pods: "2"
