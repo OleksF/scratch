@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: ResourceQuota
 metadata:
-  name: pod-demo
+  name: classify-free-quota
 spec:
   hard:
     pods: "2"
